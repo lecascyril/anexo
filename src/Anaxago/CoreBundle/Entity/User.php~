@@ -307,38 +307,4 @@ class User implements UserInterface
         return $this;
     }
 
-
-    /**
-     * Add userfav
-     *
-     * @param \Anaxago\CoreBundle\Entity\Userfav $userfav
-     *
-     * @return User
-     */
-    public function addUserfav(\Anaxago\CoreBundle\Entity\Userfav $userfav)
-    {
-        $this->userfav[] = $userfav;
-
-        return $this;
-    }
-
-    /**
-     * Remove userfav
-     *
-     * @param \Anaxago\CoreBundle\Entity\Userfav $userfav
-     */
-    public function removeUserfav(\Anaxago\CoreBundle\Entity\Userfav $userfav)
-    {
-        $this->userfav->removeElement($userfav);
-    }
-
-    /**
-     * Get userfav
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUserfav()
-    {
-        return $this->userfav;
-    }
 }

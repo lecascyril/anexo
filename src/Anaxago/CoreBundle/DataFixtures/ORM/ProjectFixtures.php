@@ -30,7 +30,9 @@ class ProjectFixtures extends Fixture
             $projectToPersist = (new Project())
                 ->setTitle($project['name'])
                 ->setDescription($project['description'])
-                ->setSlug($project['slug']);
+                ->setSlug($project['slug'])
+                ->setGetMoney($project['getmoney'])
+                ->setMoneyGot($project['moneygot']);
             $manager->persist($projectToPersist);
         }
         $manager->flush();
@@ -46,16 +48,22 @@ class ProjectFixtures extends Fixture
                 'name' => 'Fred de la compta',
                 'description' => 'Dépoussiérer la comptabilité grâce à l\'intelligence artificielle',
                 'slug' => 'fred-compta',
+                'getmoney' =>0,
+                'moneygot' => 100, 
             ],
             [
                 'name' => 'Mojjo',
                 'description' => 'L\'intelligence artificielle au service du tennis : Mojjo transforme l\'expérience des joueurs et des fans de tennis grâce à une technologie unique de captation et de traitement de la donnée',
                 'slug' => 'mojjo',
+                'getmoney' =>50,
+                'moneygot' => 100, 
             ],
             [
                 'name' => 'Eole',
                 'description' => 'Projet de construction d\'une résidence de 80 logements sociaux à Petit-Bourg en Guadeloupe par le promoteur Orion.',
                 'slug' => 'eole',
+                'getmoney' =>110,
+                'moneygot' => 100, 
             ],
         ];
     }

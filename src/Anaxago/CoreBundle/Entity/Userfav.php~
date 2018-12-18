@@ -1,0 +1,36 @@
+<?php
+
+namespace Anaxago\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Userfav
+ *
+ * @ORM\Table(name="Userfav")
+ * @ORM\Entity(repositoryClass="Anaxago\CoreBundle\Repository\ProjectRepository")
+ */
+class Userfav{
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="userfav")
+	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 */
+	private $user;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Project", inversedBy="userfav")
+	 * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+	 */
+	private $project;
+
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="moneyput", type="integer")
+	 */
+	private $moneyput;
+
+
+
+}
