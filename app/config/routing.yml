@@ -16,3 +16,7 @@ anaxago_core_registration:
 projects:
     path: /projects
     defaults: { _controller: AnaxagoCoreBundle:api:getProjects}
+
+money:
+    path: /money/key={keyapi}/idProject={idp}/montant={sum}
+    defaults: { _controller: AnaxagoCoreBundle:api:getfav}

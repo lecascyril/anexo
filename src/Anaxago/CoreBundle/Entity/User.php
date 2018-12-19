@@ -59,6 +59,13 @@ class User implements UserInterface
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $keyapi;
+
+    /**
+     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
     private $salt;
@@ -161,6 +168,7 @@ class User implements UserInterface
         return $this->password;
     }
 
+
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -171,6 +179,26 @@ class User implements UserInterface
     public function getSalt()
     {
         return $this->salt;
+    }
+
+   /**
+     * @return string The key
+     */
+    public function getKeyapi()
+    {
+        return $this->keyapi;
+    }
+
+    /**
+     * @param string $keyapi
+     *
+     * @return User
+     */
+    public function setKeyapi(string $keyapi): User
+    {
+        $this->keyapi = $keyapi;
+
+        return $this;
     }
 
     /**

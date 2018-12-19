@@ -25,7 +25,8 @@ class UserFixtures extends Fixture
             ->setFirstName('John')
             ->setLastName('Doe')
             ->setEmail('john@local.com')
-            ->setPlainPassword('john');
+            ->setPlainPassword('john')
+            ->setKeyapi('0102'); 
 
         $admin = (new User())
             ->setFirstName('admin')
@@ -34,6 +35,7 @@ class UserFixtures extends Fixture
             // because we like security
             ->setPlainPassword('admin')
             ->addRoles('ROLE_ADMIN')
+            ->setKeyapi('0201')
         ;
 
         $manager->persist($investor);

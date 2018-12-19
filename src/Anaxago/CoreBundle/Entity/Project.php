@@ -64,6 +64,8 @@ class Project
      *@var string
      *
      * @ORM\Column(name="statut", type="string")
+     *
+     * @Serializer\Groups({"list"})
      */
     private $statut;
 
