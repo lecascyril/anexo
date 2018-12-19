@@ -13,6 +13,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Anaxago\CoreBundle\Entity\Project;
 use Anaxago\CoreBundle\Entity\User;
 use Anaxago\CoreBundle\Entity\Userfav;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 
 class apiController extends Controller
@@ -39,6 +41,7 @@ class apiController extends Controller
     /**
      * @param EntityManagerInterface $entityManager
      *
+     * @Rest\View(StatusCode = 201)
      */
     public function getfavAction($keyapi, $idp, $sum)
     {
@@ -65,8 +68,36 @@ class apiController extends Controller
       $em->persist($project);
 
       $em->flush();
+        $projects = $em->getRepository(Project::class)->findAll();
 
-      return new Response('Saved new product with id');
+      return new Response ("Votre project a bien été validé, et financé");
      }
+ 
+    /**
+     * @param EntityManagerInterface $entityManager
+     *
+     */
+    public function getListeinteretAction($keyapi)
+    {
+     $em = $this->getDoctrine()->getManager();
+      $userarray = $em->getRepository('AnaxagoCoreBundle:User')->findByKeyapi("".$keyapi."");
+      $userid=$userarray[0]->getId();
+      $user = $em->getRepository('AnaxagoCoreBundle:User')->find($userid);
+
+
+
+
+
+      $userfav = $em->getRepository('AnaxagoCoreBundle:Userfav')->findByuser($user);
+
+      $data =  $this->get('jms_serializer')->serialize($userfav, 'json',  SerializationContext::create()->setGroups(array('listefav')));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;    
+    }
+
+
 
 }

@@ -33,7 +33,8 @@ class Project
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Serializer\Groups({"list"})
+     *
+     * @Serializer\Groups({"list","listefav"})
      */
     private $title;
 
@@ -42,7 +43,7 @@ class Project
      *
      * @ORM\Column(name="description", type="text")
      *
-     * @Serializer\Groups({"list"})
+     * @Serializer\Groups({"list","listefav"})
      */
     private $description;
 

@@ -3,6 +3,8 @@
 namespace Anaxago\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Userfav
@@ -16,6 +18,8 @@ class Userfav{
 	 * @ORM\ManyToOne(targetEntity="User", inversedBy="userfav")
 	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
 	 * @ORM\Id
+     *
+     * @Serializer\Groups({"listefav"})
 	 */
 	private $user;
 
@@ -23,6 +27,8 @@ class Userfav{
 	 * @ORM\ManyToOne(targetEntity="Project", inversedBy="userfav")
 	 * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
 	 * @ORM\Id
+     *
+     * @Serializer\Groups({"listefav"})
 	 */
 	private $project;
 
@@ -30,6 +36,8 @@ class Userfav{
 	 * @var int
 	 *
 	 * @ORM\Column(name="moneyput", type="integer")
+     *
+     * @Serializer\Groups({"listefav"})
 	 */
 	private $moneyput;
 

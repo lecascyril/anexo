@@ -10,6 +10,7 @@ namespace Anaxago\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -30,6 +31,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Serializer\Groups({"listefav"})
      */
     private $firstName;
 
@@ -37,12 +39,15 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @Serializer\Groups({"listefav"})
      */
     private $lastName;
 
     /**
      * @var array
      * @ORM\Column(type="array")
+     *
      */
     private $roles = ['ROLE_USER'];
 
