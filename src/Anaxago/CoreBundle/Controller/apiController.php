@@ -43,7 +43,7 @@ class apiController extends Controller
      *
      * @Rest\View(StatusCode = 201)
      */
-    public function getfavAction($keyapi, $idp, $sum)
+    public function getfavAction($keyapi, $idp, $sum, \Swift_Mailer $mailer)
     {
       $em = $this->getDoctrine()->getManager();
       $userarray = $em->getRepository('AnaxagoCoreBundle:User')->findByKeyapi("".$keyapi."");
@@ -61,6 +61,14 @@ class apiController extends Controller
       $project->setMoneyGot($sumpro);
       if ($sumpro>=$project->getGetMoney()){
         $project->setStatut("financé");
+
+         $message = (new \Swift_Message('Financement validé'))
+        ->setFrom('exemple@gmail.com')
+        ->setTo('exemple@gmail.com')
+        ->setBody('Le financement du projet que vous soutenez a été terminé.');
+
+    $mailer->send($message);
+
       } else {
         $project->setStatut("pas financé");        
       }

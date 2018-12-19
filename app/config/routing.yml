@@ -21,9 +21,15 @@ projects:
 money:
     path: /money/key={keyapi}/idProject={idp}/montant={sum}
     defaults: { _controller: AnaxagoCoreBundle:api:getfav}
-
+    methods:    [POST]
+    requirements:
+        idp: '\d+'
+        sum: '\d+'
+        keyapi: '\d+'
 
 listeproject:
     path: /listepro/key={keyapi}
     defaults: { _controller: AnaxagoCoreBundle:api:getListeinteret}
     methods:    [GET]
+    requirements:
+        keyapi: '\d+'
