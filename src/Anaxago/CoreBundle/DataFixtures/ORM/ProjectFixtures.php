@@ -31,6 +31,7 @@ class ProjectFixtures extends Fixture
                 ->setTitle($project['name'])
                 ->setDescription($project['description'])
                 ->setSlug($project['slug'])
+                ->setStatut($project['statut'])
                 ->setGetMoney($project['getmoney'])
                 ->setMoneyGot($project['moneygot']);
             $manager->persist($projectToPersist);
@@ -49,7 +50,8 @@ class ProjectFixtures extends Fixture
                 'description' => 'Dépoussiérer la comptabilité grâce à l\'intelligence artificielle',
                 'slug' => 'fred-compta',
                 'getmoney' =>100,
-                'moneygot' => 0, 
+                'moneygot' => 0,
+                'statut' => 'pas financé',
             ],
             [
                 'name' => 'Mojjo',
@@ -57,6 +59,7 @@ class ProjectFixtures extends Fixture
                 'slug' => 'mojjo',
                 'getmoney' =>100,
                 'moneygot' => 50, 
+                'statut' => 'pas financé',
             ],
             [
                 'name' => 'Eole',
@@ -64,6 +67,7 @@ class ProjectFixtures extends Fixture
                 'slug' => 'eole',
                 'getmoney' =>100,
                 'moneygot' => 110, 
+                'statut' => 'financé',
             ],
         ];
     }

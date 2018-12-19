@@ -6,39 +6,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use CoreBundle\Entity\Project;
-use FOS\RestBundle\Controller\Annotations\Get;
+use Anaxago\CoreBundle\Entity\Project;
+use Symfony\Component\HttpFoundation\Response;
+use JMS\Serializer\SerializationContext;
+
 
 class apiController extends Controller
 {
-    public function getProjetsAction(Request $request)
+
+    /**
+     * @param EntityManagerInterface $entityManager
+     *
+     */
+    public function getProjectsAction()
     {
-        $projects = $this->get('doctrine.orm.entity_manager')
-                ->getRepository('Anaxago:CoreBundle:Project')
-                ->findAll();
-        /* @var $projects project[] */
+     $project = $this->getDoctrine()->getRepository('AnaxagoCoreBundle:Project')->findAll();
 
-        $formatted = [];
-        foreach ($projects as $project) {
-            $moneygot = $projet->getMoneyGot();
-            $getmoney = $projet->getGetMoney();
-            if ($moneygot >= $getmoney)
-            {
-                $formatted[] = [
-               'titre' => $projet->getTitle(),
-               'description' => $projet->getDescription(),
-               'financé?' => "oui",
-                ];
-            }
-            else {
-                $formatted[] = [
-               'titre' => $projet->getTitle(),
-               'description' => $projet->getDescription(),
-               'financé?' => "non",
-                ];  
-            }
-        }
 
-        return new JsonResponse($formatted);
+        $data =  $this->get('jms_serializer')->serialize($project, 'json', SerializationContext::create()->setGroups(array('list')));
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;    
     }
+
 }

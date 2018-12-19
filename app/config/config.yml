@@ -30,6 +30,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    serializer:
+        enabled: true
 
 # Twig Configuration
 twig:
@@ -76,3 +78,5 @@ fos_rest:
         view_response_listener: true
     serializer:
         serialize_null: true
+    routing_loader:
+        default_format: json

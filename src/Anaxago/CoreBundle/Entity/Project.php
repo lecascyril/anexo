@@ -3,6 +3,7 @@
 namespace Anaxago\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Project
@@ -32,6 +33,7 @@ class Project
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Serializer\Groups({"list"})
      */
     private $title;
 
@@ -39,6 +41,8 @@ class Project
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
+     * @Serializer\Groups({"list"})
      */
     private $description;
 
@@ -55,6 +59,13 @@ class Project
      * @ORM\Column(name="moneygot", type="integer")
      */
     private $moneygot;
+
+    /**
+     *@var string
+     *
+     * @ORM\Column(name="statut", type="string")
+     */
+    private $statut;
 
     /**
      *
@@ -142,6 +153,30 @@ class Project
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     *
+     * @return Project
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
     }
 
     /**

@@ -6,6 +6,8 @@ use Anaxago\CoreBundle\Entity\Project;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 
 /**
  * Class DefaultController
@@ -16,6 +18,8 @@ class DefaultController extends Controller
 {
     /**
      * @param EntityManagerInterface $entityManager
+     *
+     * @Route("/")
      *
      * @return Response
      */

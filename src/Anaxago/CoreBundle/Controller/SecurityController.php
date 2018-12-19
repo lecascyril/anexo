@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 
 /**
  * Class SecurityController
@@ -23,6 +25,8 @@ class SecurityController extends Controller
 {
     /**
      * @param AuthenticationUtils $authenticationUtils
+     *
+     * @Route("/login")
      *
      * @return Response
      */
@@ -48,6 +52,8 @@ class SecurityController extends Controller
      * @param EntityManagerInterface $em
      * @param TokenStorageInterface  $tokenStorage
      * @param Session                $session
+     *
+     * @Route("/registration")
      *
      * @return Response
      */
