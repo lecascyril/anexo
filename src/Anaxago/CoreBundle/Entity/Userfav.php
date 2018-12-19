@@ -21,7 +21,7 @@ class Userfav{
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Project", inversedBy="userfav")
-	 * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
 	 * @ORM\Id
 	 */
 	private $project;

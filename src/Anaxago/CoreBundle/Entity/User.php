@@ -78,7 +78,7 @@ class User implements UserInterface
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Userfav", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Userfav", mappedBy="user")
      */
     private $userfav;
 

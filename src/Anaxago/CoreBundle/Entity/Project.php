@@ -58,7 +58,7 @@ class Project
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Userfav", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Userfav", mappedBy="project")
      */
     private $userfav;
 
