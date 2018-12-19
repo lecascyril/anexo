@@ -1,4 +1,4 @@
-<?php
+get<?php
 namespace Anaxago\CoreBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -61,14 +61,6 @@ class apiController extends Controller
       $project->setMoneyGot($sumpro);
       if ($sumpro>=$project->getGetMoney()){
         $project->setStatut("financé");
-
-         $message = (new \Swift_Message('Financement validé'))
-        ->setFrom('exemple@gmail.com')
-        ->setTo('exemple@gmail.com')
-        ->setBody('Le financement du projet que vous soutenez a été terminé.');
-
-    $mailer->send($message);
-
       } else {
         $project->setStatut("pas financé");        
       }
